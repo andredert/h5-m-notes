@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>球探比分 · 再回来看看</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 卡片系统 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+      padding: 1.8rem 1.6rem;
+      transition: box-shadow 0.15s ease;
+    }
+
+    .card + .card {
+      margin-top: 1.4rem;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+
+    .hero .brand {
+      font-size: 1.9rem;
+      font-weight: 550;
+      letter-spacing: 0.02em;
+      color: #0f172a;
+    }
+
+    .hero .subline {
+      font-size: 1.1rem;
+      margin-top: 0.7rem;
+      color: #475569;
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .meta-note {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #eef2f6;
+      padding: 0.45rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #1e293b;
+      border: 1px solid #dce1e8;
+    }
+
+    /* 标题 */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 540;
+      margin-bottom: 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid #e2e8f0;
+      display: inline-block;
+      letter-spacing: 0.01em;
+    }
+
+    .section-title-sm {
+      font-size: 1.1rem;
+      font-weight: 520;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 优势网格 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (min-width: 600px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 800px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .advantage-item {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 1.2rem 1rem;
+      border: 1px solid #eaeef2;
+    }
+
+    .advantage-item .label {
+      font-weight: 530;
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #0f172a;
+    }
+
+    .advantage-item .desc {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* 说明区 / 叙述 */
+    .narrative p {
+      margin-bottom: 0.85rem;
+    }
+
+    .narrative p:last-child {
+      margin-bottom: 0;
+    }
+
+    .narrative a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid #b8d0f7;
+      transition: border-color 0.1s;
+    }
+
+    .narrative a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    .narrative .highlight {
+      background: #f1f5f9;
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      font-weight: 450;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #0f172a;
+    }
+
+    .faq-a {
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      padding: 1.8rem 0 0.8rem;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .footer-note .sep {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+
+    .footer-note a {
+      color: #1e293b;
+      text-decoration: none;
+      border-bottom: 1px solid #d4dae1;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #1e293b;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .card {
+        padding: 1.3rem 1rem;
+      }
+      .hero .brand {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="card hero">
+      <div class="brand">回来看看 · 球探比分</div>
+      <div class="subline">比分一直在更新，收藏夹里的老朋友。</div>
+      <div class="meta-note">再次打开 · 仍是熟悉的节奏</div>
+    </div>
+
+    <!-- 优势区：为什么值得再次收藏 -->
+    <div class="card">
+      <div class="section-title">为什么一直留着它</div>
+      <div class="grid-3">
+        <div class="advantage-item">
+          <span class="label">⚡ 即时刷新</span>
+          <span class="desc">从亚洲到欧洲，主流联赛比分几乎零延迟推送，无需手动刷新。</span>
+        </div>
+        <div class="advantage-item">
+          <span class="label">📌 收藏即主页</span>
+          <span class="desc">加个书签，每次想看比分直接点，不用再搜来搜去。</span>
+        </div>
+        <div class="advantage-item">
+          <span class="label">🗂️ 赛程与历史</span>
+          <span class="desc">不仅看当前比分，还能翻查过往对阵，数据脉络很清晰。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 说明区：从「再次访问」的角度叙述 -->
+    <div class="card narrative">
+      <div class="section-title">从收藏到习惯</div>
+      <p>
+        很多时候，我们打开一个体育比分站，是因为某个周末的联赛，或者一场关键的杯赛。 
+        但时间久了，能让你一直留在收藏夹里的，往往是那些界面干净、信息直接的地方。
+        <a href="https://zh-m-qiutansports.com">球探比分</a> 就是这样一个存在。
+      </p>
+      <p>
+        它没有复杂的弹窗，也没有让你费劲找比赛层级。从五大联赛到中超、J联赛、K联赛，大部分赛事的实时比分、红牌、换人，都以一种很朴素的方式排列在页面上。哪怕隔了两周再打开，界面布局依然熟悉，不需要重新适应。
+      </p>
+      <p>
+        我个人比较喜欢它的「完场」和「赛程」标签切换逻辑——想看历史结果就点过去，想关注接下来的比赛就留在赛程视图。如果你也习惯把某个比分站当作足球生活的背景板，那它值得被保留在书签栏的显眼位置。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（不是完整FAQ，只是摘要式提示） -->
+    <div class="card">
+      <div class="section-title">常见疑问 · 摘要</div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 多久更新一次比分？</div>
+        <div class="faq-a">覆盖主要联赛和杯赛，几乎是进球后十几秒内显示，部分焦点赛事配有动画提示。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 需要注册或登录吗？</div>
+        <div class="faq-a">不需要。打开页面就能看到实时比分，没有任何强制注册环节。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 手机浏览器上体验如何？</div>
+        <div class="faq-a">响应式设计，竖屏横屏都能看，比分列表自适应屏幕宽度，点击赛程即可展开详情。</div>
+      </div>
+      <div style="margin-top: 0.8rem; font-size: 0.9rem; color: #64748b;">
+        —— 如果还有更多疑问，可以直接在站内浏览，各联赛页面都有对应的数据说明。
+      </div>
+    </div>
+
+    <!-- 再次提醒 + 底部链接 -->
+    <hr>
+    <div class="footer-note">
+      <span>持续关注 · 比分在变，习惯没变</span>
+      <span class="sep">·</span>
+      <a href="https://zh-m-qiutansports.com">球探比分</a>
+      <span class="sep">·</span>
+      <span>收藏它，就像打开一个老朋友</span>
+    </div>
+
+    <!-- 极简 脚注 -->
+    <div style="text-align: center; font-size: 0.78rem; color: #94a3b8; padding: 1.2rem 0 0.3rem;">
+      页面仅供介绍参考 · 数据来源以网站实际展示为准
+    </div>
+  </div>
+</body>
+</html>
